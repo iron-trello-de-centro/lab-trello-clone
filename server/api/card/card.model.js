@@ -14,7 +14,7 @@ const cardSchema = new mongoose.Schema({
   list: {
     type: Schema.Types.ObjectId,
     ref: 'List',
-    require: true
+    require: false
   }
 }, {
   timestamps: {
