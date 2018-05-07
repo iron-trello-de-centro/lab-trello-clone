@@ -16,9 +16,11 @@ exports.createCard = function(req, res, next) {
 		if(err) {
       console.log(err);
 			return res.send(500);
+		}else{
+			return res.status(200).json(card);
 		}
-
 		// Update the corresponding list
+		
 		// Lesson 2: Update the current list
 	});
 };

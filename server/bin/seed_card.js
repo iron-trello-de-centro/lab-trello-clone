@@ -10,6 +10,7 @@ const cards = [
     description: "blblablalblablalblablablalblablalblablabl",
     dueDate: new Date(),
     position: 1,
+    
   },
   {
     title: "aqui jodido",
