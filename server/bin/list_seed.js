@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 require('dotenv').config();
+const mongoose = require('mongoose');
 const listSchema  = require ('../api/list/list.model');
 
 const list_data = [
@@ -22,7 +22,7 @@ const list_data = [
 
 
 mongoose
-  .connect(process.env.DBURL)
+  .connect("mongodb://localhost/iron-trello")
   .then(() => {
     listSchema.collection.drop()
     listSchema.create(list_data)
