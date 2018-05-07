@@ -10,12 +10,7 @@ const cardSchema = new mongoose.Schema({
   },
   description: String,
   dueDate: Date,
-  position: Number,
-  list: {
-    type: Schema.Types.ObjectId,
-    ref: 'List',
-    require: false
-  }
+  position: Number
 }, {
   timestamps: {
     createdAt: "created_at",
