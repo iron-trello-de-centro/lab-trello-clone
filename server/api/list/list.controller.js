@@ -18,8 +18,7 @@ exports.getLists = function(req, res, next) {
           });
           return res.json(lists);
         })
-        .catch(error =>
-          res.status(400).json({ message: 'impossible to retrieve cards' })
+        .catch(error => res.status(400).json({ message: `impossible to retrieve cards, ${error}` })
         );
     });
   });
@@ -64,5 +63,12 @@ exports.editList = function(req, res, next) {
 };
 
 exports.removeList = function(req, res) {
-  // Lesson 2: Implement remove list form the database
+  listModel.findByIdAndRemove(req.params.id, function(err, list) {
+    if (err) {
+      res
+        .status(400)
+        .json({ message: 'impossible to remove the list', error: err });
+    }
+    res.status(200).json({ message: `${list} removed successfully` });
+  });
 };

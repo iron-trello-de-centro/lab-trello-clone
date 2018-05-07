@@ -1,5 +1,5 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-require("dotenv").config();
 const cardSchema = require('../api/card/card.model');
 const dbURL = process.env.DBURL;
 
@@ -51,7 +51,7 @@ const cards = [
 ];
 
 mongoose
-  .connect('mongodb://localhost/iron-trello')
+  .connect(process.env.DBURL)
   .then(() => {
     cardSchema.collection.drop()
     cardSchema.create(cards)
