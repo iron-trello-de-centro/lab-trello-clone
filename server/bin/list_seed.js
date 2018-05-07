@@ -1,9 +1,6 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
-const List = '../api/list/list.model.js';
-const Card = '../api/card/card.model.js';
-
-const dbURL = process.env.DBURL;
+require('dotenv').config();
+const listSchema  = require ('../api/list/list.model');
 
 const list_data = [
   {
@@ -23,14 +20,15 @@ const list_data = [
   }
 ];
 
-mongoose.connect(dbURL)
-.then(() => {
-  console.log(List, Card);
 
-  List.create(list_data)
-    .then(() => {
-      console.log('lists inserted');
-      mongoose.disconnect();
+mongoose
+  .connect(process.env.DBURL)
+  .then(() => {
+    listSchema.collection.drop()
+    listSchema.create(list_data)
+    .then((item) => {
+      console.log("items inserted", `${item}`)
+      mongoose.disconnect();   
     })
-    .catch(e => console.log(e));
-});
+    .catch(err => console.log(err))
+  });

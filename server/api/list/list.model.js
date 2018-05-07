@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+'use strict';
 
+const mongoose = require('mongoose');
 
 const listSchema = new mongoose.Schema(
   {
@@ -15,9 +15,8 @@ const listSchema = new mongoose.Schema(
     cards: [
       {
         card: {
-          type: Schema.Types.ObjectId,
-          ref: 'Card',
-          require: false
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Card'
         }
       }
     ]
