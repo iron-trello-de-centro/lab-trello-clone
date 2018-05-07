@@ -18,7 +18,10 @@ exports.getLists = function(req, res, next) {
           });
           return res.json(lists);
         })
-        .catch(error => res.status(400).json({ message: `impossible to retrieve cards, ${error}` })
+        .catch(error =>
+          res
+            .status(400)
+            .json({ message: `impossible to retrieve cards, ${error}` })
         );
     });
   });
@@ -30,14 +33,15 @@ exports.createList = function(req, res, next) {
     position: req.body.position
   });
 
-  Q.nfcall(item.save.bind(item)).then(function() {
-    res.json({
-      _id: item._id,
-      title: item.title,
-      position: item.position,
-      cards: []
+   Q.nfcall(item.save.bind(item)).then(function() {
+      console.log(item)
+      res.json({
+        _id: item._id,
+        title: item.title,
+        position: item.position,
+        cards: []
+      });
     });
-  });
 };
 
 exports.editList = function(req, res, next) {
