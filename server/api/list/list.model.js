@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const listSchema = new mongoose.Schema(
   {
     title: {
@@ -15,7 +16,8 @@ const listSchema = new mongoose.Schema(
       {
         card: {
           type: Schema.Types.ObjectId,
-          ref: 'Card'
+          ref: 'Card',
+          require: false
         }
       }
     ]
