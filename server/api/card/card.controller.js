@@ -14,7 +14,8 @@ exports.createCard = function (req, res, next) {
 
 	newCard.save()
 	.then(card => {
-		listModel.findByIdAndUpdate(newCard.list, {$push: {cards: card._id}})
+		console.log(card.list)
+		listModel.findByIdAndUpdate(card.list, {$push: {cards: card._id}})
 			.then(list => {
 				console.log(card)
 				console.log(list)

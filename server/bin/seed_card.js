@@ -51,8 +51,8 @@ const cards = [
 ];
 
 mongoose
-  .connect(process.env.DBURL)
-  .then(() => {
+.connect("mongodb://localhost/iron-trello")
+.then(() => {
     cardSchema.collection.drop()
     cardSchema.create(cards)
     .then(() => {
